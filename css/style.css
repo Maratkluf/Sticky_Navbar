@@ -1,0 +1,267 @@
+body {
+    background: white;
+    margin: 0;
+    height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    background: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 300ms ease-in-out;
+}
+
+header .logo{
+    font-weight: bold;
+    font-size: 1.125rem;
+    color: #4040db;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inner {
+    width: 60%;
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul a{
+    padding: 1em 1.5em;
+    position: relative;
+}
+
+nav ul a:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 3%;
+    width: 0;
+    background: #4040db;
+    height: 0.3em;
+    transition: 0.3s;
+}
+
+nav ul a:hover:after{
+    width: 95%;
+}
+
+nav ul a:hover{
+    color: #4040db;
+}
+
+
+
+.active{
+    font-weight: bold;
+    color: #4040db;
+    position: relative;
+}
+
+.active::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 3%;
+    width: 95%;
+    background: #4040db;
+    height: 0.3em
+}
+
+section {
+    margin-top: 6em;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 1.4em;
+}
+
+h2 {
+    margin-top: 2em;
+}
+
+.subhead{
+    font-size: 1.5rem;
+    line-height: 1.4em;
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.6em;
+}
+
+/* Scroll */
+
+.scroll-down header {
+    transform: translate3d(0, -100%, 0);
+}
+
+.scroll-up header {
+    filter: drop-shadow(0 -10px 20px rgb(170,170,170));
+}
+
+
+/* Rotate box */
+
+.general-info{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.information{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.box-info{
+    margin: 15px 0;
+    border-radius: 15px;
+    width: 230px;
+    height: 140px;
+    position: relative;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.box-info .icon-info{
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: 0.3s ease-in-out;
+    transform: perspective(500px) rotateY(0deg);
+}
+.box-info .icon-info.front{
+    background: white;
+}
+.box-info:hover .icon-info.front{
+    transform: perspective(500px) rotateY(180deg);
+}
+
+.box-info .icon-info.back{
+    background: black;
+    border-radius: 15px;
+    font-style: italic;
+    color: white;
+    transform: perspective(500px) rotateY(180deg);
+}
+.box-info:hover .icon-info.back{
+    transform: perspective(500px) rotateY(360deg);
+}
+.box-info .icon-info h5{
+    text-transform: uppercase;
+    transform: perspective(500px) translateZ(30px);
+}
+.box-info .icon-info img{
+    transform: perspective(500px) translateZ(20px);
+}
+.short-info{
+    height: 5rem;
+    width: 5rem;
+}
+
+/* Grid items */
+
+.grid-boxes {
+    justify-content: center;
+    align-self: center;
+    min-height: 100vh;
+}
+
+.container{
+    position: relative;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-rows: minmax(100px, auto);
+    margin: 40px;
+    grid-gap: 10px;
+}
+
+.container .box {
+    background: #333;
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.container .box:hover {
+    background: #4040db
+}
+
+.container .box img {
+    
+    height: 156px;
+    width: 156px;
+}
+
+.container .box:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.container .box:nth-child(2) {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.container .box:nth-child(4) {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.container .box:nth-child(7) {
+    grid-column: span 3;
+    grid-row: span 1;
+}
+
+@media (max-width: 1024px) {
+    .inner {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .container{
+        grid-template-columns: repeat(auto-fill, minmax(auto, 2fr));
+        grid-template-rows: minmax(auto, auto);
+    }
+    .container .box{
+        grid-column: unset !important;
+        grid-row: unset !important;
+    }
+}
+
